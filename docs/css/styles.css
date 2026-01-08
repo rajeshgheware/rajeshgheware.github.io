@@ -635,23 +635,9 @@ section h2 {
         text-decoration: underline !important;
     }
 
-    a[href^="http"]:after {
-        content: " (" attr(href) ")";
-        font-size: 8pt;
-        color: #666;
-        text-decoration: none;
-        word-break: break-all;
-    }
-
-    /* Don't show URLs for short links */
-    .contact-row a[href^="http"]:after,
-    .pub-row a[href^="http"]:after,
-    .project-row a[href^="http"]:after {
-        content: "";
-    }
 
     .contact-row i {
-        display: none;
+        color: #2563eb !important;
     }
 
     @page {
