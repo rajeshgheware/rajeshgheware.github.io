@@ -204,6 +204,15 @@ section h2 {
     color: var(--text-light);
 }
 
+.about-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.about-content a:hover {
+    text-decoration: underline;
+}
+
 /* Credentials Section */
 .credentials-grid {
     display: grid;
@@ -264,6 +273,19 @@ section h2 {
 
 .project-row strong {
     color: var(--text-dark);
+}
+
+.project-row a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.project-row a:hover {
+    text-decoration: underline;
+}
+
+.project-row a strong {
+    color: var(--primary-color);
 }
 
 /* Training Compact */
@@ -358,6 +380,15 @@ section h2 {
 
 .pub-row strong {
     color: var(--text-dark);
+}
+
+.pub-row a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.pub-row a:hover {
+    text-decoration: underline;
 }
 
 /* Contact Compact */
