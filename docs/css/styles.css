@@ -67,7 +67,7 @@ body {
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: 60% top;
+    object-position: center top;
     border: 2px solid var(--primary-color);
 }
 
