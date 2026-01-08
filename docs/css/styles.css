@@ -63,11 +63,11 @@ body {
 }
 
 .header-photo {
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: 70% 10%;
+    object-position: center center;
     border: 2px solid var(--primary-color);
 }
 
