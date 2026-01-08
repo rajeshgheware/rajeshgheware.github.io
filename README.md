@@ -26,6 +26,6 @@ The site is deployed via GitHub Pages from the `docs` folder using GitHub Action
 
 ## Contact
 
-- **LinkedIn:** [linkedin.com/in/rajeshgheware](https://www.linkedin.com/in/rajeshgheware)
+- **LinkedIn:** [linkedin.com/in/rajesh-gheware](https://linkedin.com/in/rajesh-gheware)
 - **Website:** [gheware.com](https://www.gheware.com)
 - **Training:** [brainupgrade.in](https://brainupgrade.in)
