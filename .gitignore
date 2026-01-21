@@ -4,3 +4,10 @@ Rajesh-Gheware-Trainer-Profile-3Page.md
 
 # Environment files
 .env
+
+# Claude Code configuration and documentation
+.claude/
+CLAUDE.md
+
+# Working directories (images copied to docs/images/)
+resources/
