@@ -1343,17 +1343,59 @@
         <h2 class="section-title">Let's Build Something</h2>
 
         <!-- Email Capture Widget -->
-        <div style="background: linear-gradient(135deg, #f8f4e8 0%, #fef9ec 100%); border: 1px solid #e8d89a; border-radius: 12px; padding: 28px 32px; margin-bottom: 36px; max-width: 560px;">
+        <div id="lead-capture" style="background: linear-gradient(135deg, #f8f4e8 0%, #fef9ec 100%); border: 1px solid #e8d89a; border-radius: 12px; padding: 28px 32px; margin-bottom: 36px; max-width: 560px;">
             <h3 style="margin: 0 0 6px; font-size: 1.1rem; color: #1a1a1a;">📬 Get the Free LangGraph Cheat Sheet</h3>
             <p style="margin: 0 0 18px; color: #555; font-size: 0.9rem;">AI agent patterns, lab code, and book updates — straight to your inbox.</p>
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <form id="leadForm" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                    <input type="text" name="website" tabindex="-1" autocomplete="off" />
+                </div>
                 <input type="email" name="email" placeholder="your@email.com" required
                     style="flex: 1; min-width: 200px; padding: 10px 14px; border: 1px solid #d1c07a; border-radius: 8px; font-size: 0.9rem; outline: none; background: #fff;" />
-                <input type="hidden" name="_subject" value="New subscriber — LangGraph Cheat Sheet (rajeshgheware.github.io)" />
-                <button type="submit"
+                <button type="submit" id="leadBtn"
                     style="background: #b8860b; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; white-space: nowrap;">Send me the cheat sheet →</button>
             </form>
+            <p id="leadMsg" style="display:none; margin: 12px 0 0; font-size: 0.9rem; font-weight: 600;"></p>
         </div>
+        <script>
+        document.getElementById('leadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var hp = this.querySelector('input[name="website"]');
+            if (hp && hp.value) return;
+            var btn = document.getElementById('leadBtn');
+            var msg = document.getElementById('leadMsg');
+            var email = this.querySelector('input[name="email"]').value.trim();
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            try {
+                var resp = await fetch('https://dev-leads.gheware-ai.com/dev-lead-langgraph-cheatsheet', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, source_site: 'rajeshgheware.github.io' })
+                });
+                var data = await resp.json();
+                if (data.success) {
+                    msg.style.color = '#2e7d32';
+                    msg.textContent = 'Check your inbox for the cheat sheet!';
+                    this.style.display = 'none';
+                } else {
+                    msg.style.color = '#c62828';
+                    msg.textContent = data.detail || 'Something went wrong. Try again.';
+                    btn.disabled = false;
+                    btn.textContent = 'Send me the cheat sheet →';
+                }
+            } catch (err) {
+                msg.style.color = '#c62828';
+                msg.textContent = 'Network error. Please try again.';
+                btn.disabled = false;
+                btn.textContent = 'Send me the cheat sheet →';
+            }
+            msg.style.display = 'block';
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', { event_category: 'Lead Magnet', event_label: 'LangGraph Cheat Sheet' });
+            }
+        });
+        </script>
 
         <div class="contact-grid">
             <div>
