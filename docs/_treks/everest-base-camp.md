@@ -54,7 +54,8 @@ sources:
 ## Overview
 
 The route runs Lukla → Phakding → Namche Bazaar → Tengboche → Dingboche → Lobuche → Gorak Shep → Everest Base Camp,
-with acclimatisation days at Namche and Dingboche. Most people climb Kala Patthar at dawn from Gorak Shep for the
+with acclimatisation days at Namche and Dingboche. My [acclimatisation guide](/treks/guides/acclimatisation/) checks
+this itinerary night by night. Most people climb Kala Patthar at dawn from Gorak Shep for the
 classic Everest view, because you can't see the summit well from base camp itself.
 
 ## Getting there

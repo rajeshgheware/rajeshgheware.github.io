@@ -171,6 +171,8 @@ your sleeping altitude rises. The Wilderness Medical Society guidelines (summari
   **go down.** Descent is the most important treatment.
 
 Pick a trek itinerary that respects these rules, and never push on with worsening symptoms because you feel fit.
+For the full picture, including how to check an itinerary night by night and the warning signs of HACE and HAPE, read my
+[acclimatisation guide](/treks/guides/acclimatisation/).
 
 ## The last two weeks
 
