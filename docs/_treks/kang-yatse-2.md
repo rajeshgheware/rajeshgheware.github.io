@@ -1,11 +1,12 @@
 ---
-title: "Kang Yatse 2 (6,250 m): a Ladakh summit through the Markha Valley"
-description: "Kang Yatse 2 (6,250 m) summit trek in Hemis National Park, Ladakh: route through the Markha Valley, distance, days, season, acclimatisation and permits. Trekked September 2025."
+title: "Kang Yatse 2 (6,250 m): my summit attempt through the Markha Valley"
+description: "Kang Yatse 2 (6,250 m) summit trek in Hemis National Park, Ladakh: route through the Markha Valley, distance, days, season, acclimatisation and permits. Attempted September 2025 (turned back on summit day)."
 date: 2026-11-22
 last_verified: 2026-11-22
 status: done
 date_done: "6–13 Sep 2025"
 trek_year: 2025
+summited: false             # turned back on summit day
 notes_pending: true
 peak: Kang Yatse 2
 place_type: Mountain
@@ -66,4 +67,8 @@ is usually over Kongmaru La (about 5,200 m) to Shang Sumdo or Chogdo. The exact 
 
 ## My trek: 6–13 September 2025
 
-*My first-hand notes are coming soon: summit-day timings, conditions, what worked in my kit and what I'd change.*
+I didn't make the summit. On summit day, severe lower back pain and a lack of physical energy made me turn back
+before the top. On a 6,000 m peak, turning around when your body says no is the right call.
+
+*More notes coming soon: how the approach days went, where summit day fell apart and what I'm changing in my training
+and preparation for next time.*

@@ -15,6 +15,7 @@ layout: null
       "url": {{ t.url | absolute_url | jsonify }},
       "status": {{ t.status | jsonify }},
       "trek_year": {{ t.trek_year | jsonify }},
+      "summited": {% if t.summited == false %}false{% elsif t.status == "done" %}true{% else %}null{% endif %},
       "place_type": {{ t.place_type | default: "Mountain" | jsonify }},
       "planned_for": {{ t.planned_for | jsonify }},
       "date_done": {{ t.date_done | jsonify }},

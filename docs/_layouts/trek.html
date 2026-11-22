@@ -10,7 +10,7 @@ layout: base
     <p class="status planned">🎒 <strong>Bucket list, planned for {{ t.planned_for }}.</strong>
         This is my pre-trek research guide. I'll update it with first-hand notes, photos and a GPX track after the trek.</p>
     {% else %}
-    <p class="status done">✅ <strong>Trekked {{ t.date_done }}.</strong>{% if t.notes_pending %}
+    <p class="status done">{% if t.summited == false %}↩️ <strong>Attempted {{ t.date_done }}, turned back before the summit.</strong>{% else %}✅ <strong>Trekked {{ t.date_done }}.</strong>{% endif %}{% if t.notes_pending %}
         The facts below are researched and sourced. My own trip notes and photos are being added.{% endif %}</p>
     {% endif %}
 

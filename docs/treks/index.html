@@ -45,7 +45,7 @@ description: Trek guides by Rajesh Gheware, starting with the Western Ghats. Eac
                 <td>{% if t.max_altitude_m %}{{ t.max_altitude_m }} m{% endif %}</td>
                 <td>{{ t.trek_year }}</td>
                 <td>{{ t.best_season | join: " " | upcase }}</td>
-                <td>{% if t.status == "planned" %}🎒 planned{% else %}✅ done{% endif %}</td>
+                <td>{% if t.status == "planned" %}🎒 planned{% elsif t.summited == false %}↩️ attempted{% else %}✅ done{% endif %}</td>
             </tr>
         {% endfor %}
         </tbody>
