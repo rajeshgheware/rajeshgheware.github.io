@@ -1,0 +1,39 @@
+---
+layout: null
+---
+{%- assign treks = site.treks | sort: "date" | reverse -%}
+{
+  "title": "Treks by Rajesh Gheware",
+  "home_page_url": "{{ site.url }}/treks/",
+  "updated": {{ site.time | date_to_xmlschema | jsonify }},
+  "note": "Facts are pre-trek research unless status is 'done'. Fees and rules change; check last_verified and the official portal.",
+  "treks": [
+  {%- for t in treks %}
+    {
+      "name": {{ t.peak | jsonify }},
+      "title": {{ t.title | jsonify }},
+      "url": {{ t.url | absolute_url | jsonify }},
+      "status": {{ t.status | jsonify }},
+      "planned_for": {{ t.planned_for | jsonify }},
+      "date_done": {{ t.date_done | jsonify }},
+      "last_verified": {{ t.last_verified | date: "%Y-%m-%d" | jsonify }},
+      "region": {{ t.region | jsonify }},
+      "state": {{ t.state | jsonify }},
+      "peak_geo": {{ t.peak_geo | jsonify }},
+      "difficulty": {{ t.difficulty | jsonify }},
+      "distance_km_round_trip": {{ t.distance_km | jsonify }},
+      "duration_days": {{ t.duration_days | jsonify }},
+      "max_altitude_m": {{ t.max_altitude_m | jsonify }},
+      "elevation_gain_m": {{ t.elevation_gain_m | jsonify }},
+      "best_season": {{ t.best_season | jsonify }},
+      "trailhead": {{ t.trailhead | jsonify }},
+      "from_bengaluru": {{ t.from_bengaluru | jsonify }},
+      "permit": {{ t.permit | jsonify }},
+      "gpx": {% if t.gpx %}{{ t.gpx | absolute_url | jsonify }}{% else %}null{% endif %},
+      "tldr": {{ t.tldr | jsonify }},
+      "faq": {{ t.faq | jsonify }},
+      "sources": {{ t.sources | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {%- endfor %}
+  ]
+}

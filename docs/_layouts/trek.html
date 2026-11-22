@@ -1,0 +1,103 @@
+---
+layout: base
+---
+{%- assign t = page -%}
+{%- capture dist -%}{% if t.distance_km.first %}{{ t.distance_km | join: "–" }}{% else %}{{ t.distance_km }}{% endif %} km{%- endcapture -%}
+<article class="trek">
+    <p class="crumbs"><a href="/treks/">Treks</a> › {{ t.region }}</p>
+    <h1>{{ t.title }}</h1>
+
+    {% if t.status == "planned" %}
+    <p class="status planned">🎒 <strong>Bucket list, planned for {{ t.planned_for }}.</strong>
+        This is my pre-trek research guide. I'll update it with first-hand notes, photos and a GPX track after the trek.</p>
+    {% else %}
+    <p class="status done">✅ Trekked on {{ t.date_done | date: "%-d %b %Y" }}.</p>
+    {% endif %}
+
+    <section class="tldr" aria-label="Summary">
+        <h2>TL;DR</h2>
+        <p>{{ t.tldr }}</p>
+    </section>
+
+    <section class="facts" aria-label="Trek facts">
+        <h2>Trek facts</h2>
+        <dl>
+            <div><dt>Difficulty</dt><dd class="diff diff-{{ t.difficulty }}">{{ t.difficulty | capitalize }}</dd></div>
+            <div><dt>Distance (round trip)</dt><dd>{{ dist }}</dd></div>
+            <div><dt>Duration</dt><dd>{{ t.duration_days }} day{% if t.duration_days > 1 %}s{% endif %}</dd></div>
+            <div><dt>Summit</dt><dd>{{ t.max_altitude_m }} m</dd></div>
+            <div><dt>Elevation gain</dt><dd>~{{ t.elevation_gain_m }} m</dd></div>
+            <div><dt>Best season</dt><dd>{{ t.best_season | join: ", " | upcase }}</dd></div>
+            <div><dt>Trailhead</dt><dd>{{ t.trailhead }}</dd></div>
+            <div><dt>From Bengaluru</dt><dd>{{ t.from_bengaluru }}</dd></div>
+            <div><dt>Permit</dt><dd>{{ t.permit }}</dd></div>
+        </dl>
+        <p class="verified">Facts last checked {{ t.last_verified | date: "%-d %b %Y" }}. Fees, caps and rules change, so confirm on the official booking portal before you go.</p>
+        {% if t.gpx %}<p><a class="btn" href="{{ t.gpx }}" download>⬇ Download GPX</a></p>{% endif %}
+    </section>
+
+    <div class="body">
+        {{ content }}
+    </div>
+
+    {% if t.faq %}
+    <section class="faq">
+        <h2>FAQ</h2>
+        {% for f in t.faq %}
+        <details>
+            <summary>{{ f.q }}</summary>
+            <p>{{ f.a }}</p>
+        </details>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if t.sources %}
+    <section class="sources">
+        <h2>Sources</h2>
+        <ul>{% for s in t.sources %}<li><a href="{{ s.url }}" rel="noopener" target="_blank">{{ s.title }}</a></li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    {%- assign others = site.treks | where_exp: "x", "x.url != page.url" -%}
+    {% if others.size > 0 %}
+    <section class="related">
+        <h2>More treks</h2>
+        <ul>{% for o in others limit: 4 %}<li><a href="{{ o.url }}">{{ o.title }}</a> · {{ o.difficulty }}</li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    <p class="alt-formats">For agents and feeds: <a href="/treks/index.json">trek data (JSON)</a> · <a href="/llms.txt">llms.txt</a> · <a href="/treks/feed.xml">RSS</a></p>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": {{ t.title | jsonify }},
+      "description": {{ t.description | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "datePublished": {{ t.date | date_to_xmlschema | jsonify }},
+      "dateModified": {{ t.last_verified | date_to_xmlschema | jsonify }},
+      "author": { "@type": "Person", "name": "Rajesh Gheware", "url": "https://rajeshgheware.github.io/" },
+      "about": { "@id": {{ page.url | absolute_url | append: "#place" | jsonify }} },
+      "keywords": {{ t.tags | join: ", " | jsonify }}
+    },
+    {
+      "@type": "Mountain",
+      "@id": {{ page.url | absolute_url | append: "#place" | jsonify }},
+      "name": {{ t.peak | jsonify }},
+      "geo": { "@type": "GeoCoordinates", "latitude": {{ t.peak_geo.lat }}, "longitude": {{ t.peak_geo.lon }}, "elevation": {{ t.max_altitude_m }} },
+      "containedInPlace": { "@type": "AdministrativeArea", "name": {{ t.state | jsonify }} }
+    }{% if t.faq %},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [{% for f in t.faq %}
+        { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>

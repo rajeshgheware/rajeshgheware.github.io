@@ -1,0 +1,15 @@
+---
+layout: null
+---
+# Rajesh Gheware
+
+> Chief Architect, AI & DevOps consultant and GenAI / Agentic AI trainer (5,000+ professionals trained). Author of books on Kubernetes (CKA) and Agentic AI. Also a trekker and ultra-distance cyclist based in Bengaluru, India.
+
+- [Portfolio](https://rajeshgheware.github.io/): experience, AI projects, training catalog, publications, contact
+- [Training](https://devops.gheware.com): Agentic AI, GenAI, Kubernetes, DevOps corporate training
+
+## Treks
+
+Trek guides with the same structured facts on every page (distance, difficulty, season, permits, transport from Bengaluru). All data as JSON: [treks/index.json]({{ site.url }}/treks/index.json). Index: [treks]({{ site.url }}/treks/).
+{% assign treks = site.treks | sort: "date" | reverse %}{% for t in treks %}
+- [{{ t.title }}]({{ t.url | absolute_url }}): {{ t.difficulty }}, {% if t.distance_km.first %}{{ t.distance_km | join: "–" }}{% else %}{{ t.distance_km }}{% endif %} km round trip, {{ t.max_altitude_m }} m, best {{ t.best_season | join: "/" }}. {% if t.status == "planned" %}Pre-trek research (planned {{ t.planned_for }}).{% else %}Trekked {{ t.date_done | date: "%Y-%m-%d" }}.{% endif %} Last verified {{ t.last_verified | date: "%Y-%m-%d" }}.{% endfor %}

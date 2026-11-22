@@ -1,0 +1,78 @@
+/* Trek blog styles. Mirrors the design tokens inlined in /index.html. */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --ink: #1a1a1a; --ink-soft: #555; --ink-muted: #888;
+    --cream: #f9f7f3; --cream-dark: #f0ece4; --white: #fff; --ruled: #e5e0d8;
+    --sienna: #b34a1e; --sienna-light: #d4652e; --indigo: #3730a3;
+    --sage: #166534; --gold: #b8860b;
+}
+html { font-size: 17px; }
+body { font-family: 'Outfit', system-ui, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+a { color: var(--sienna); }
+
+/* nav + footer (same look as homepage) */
+.nav { position: sticky; top: 0; z-index: 99; background: rgba(249,247,243,.88); backdrop-filter: blur(16px) saturate(160%); border-bottom: 1px solid var(--ruled); }
+.nav-inner { max-width: 1080px; margin: 0 auto; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; }
+.nav-name { font-family: 'Newsreader', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { color: var(--ink-soft); text-decoration: none; font-size: .78rem; font-weight: 500; }
+.nav-links a:hover, .nav-cta-link { color: var(--sienna) !important; }
+.nav-cta-link { font-weight: 600; }
+.footer { border-top: 1px solid var(--ruled); padding: 32px 28px; text-align: center; font-size: .8rem; color: var(--ink-muted); }
+.footer-links { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+.footer a { color: var(--ink-soft); text-decoration: none; }
+
+/* layout + type */
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 28px 72px; }
+h1 { font-family: 'Newsreader', serif; font-weight: 400; font-size: 2.4rem; line-height: 1.15; letter-spacing: -.01em; margin-bottom: 16px; }
+h2 { font-family: 'Newsreader', serif; font-weight: 500; font-size: 1.5rem; margin: 40px 0 12px; }
+h3 { font-size: 1.05rem; margin: 24px 0 8px; }
+p, ul, ol, table { margin-bottom: 16px; }
+ul, ol { padding-left: 1.3em; }
+.section-label { font-size: .66rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--sienna); margin-bottom: 8px; }
+.lede, .crumbs { color: var(--ink-soft); }
+.crumbs { font-size: .8rem; margin-bottom: 8px; }
+.crumbs a { text-decoration: none; }
+
+/* trek blocks */
+.status { padding: 12px 16px; border-radius: 8px; font-size: .9rem; }
+.status.planned { background: #fef9ec; border: 1px solid #e8d89a; }
+.status.done { background: #ecfdf3; border: 1px solid #b7e4c7; }
+.tldr { background: var(--white); border-left: 4px solid var(--sienna); padding: 4px 20px 8px; margin-top: 24px; }
+.tldr h2, .facts h2 { margin-top: 16px; font-size: 1.1rem; font-family: 'Outfit', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--sienna); }
+.facts { background: var(--white); border: 1px solid var(--ruled); border-radius: 10px; padding: 4px 20px 12px; margin-top: 24px; }
+.facts dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 24px; margin-bottom: 12px; }
+.facts dt { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-muted); }
+.facts dd { font-weight: 500; font-size: .92rem; }
+.verified { font-size: .78rem; color: var(--ink-muted); }
+.diff { display: inline-block; padding: 0 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; text-transform: capitalize; }
+.diff-easy { background: #dcfce7; color: var(--sage); }
+.diff-moderate { background: #e0e7ff; color: var(--indigo); }
+.diff-hard { background: #fde2d4; color: var(--sienna); }
+.diff-expert { background: #1a1a1a; color: #fff; }
+.btn { display: inline-block; background: var(--sienna); color: #fff; padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--ruled); vertical-align: top; }
+th { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-muted); }
+.faq details { border-bottom: 1px solid var(--ruled); padding: 10px 0; }
+.faq summary { cursor: pointer; font-weight: 600; }
+.faq details p { margin: 8px 0 0; color: var(--ink-soft); }
+.sources li, .related li { font-size: .88rem; }
+.alt-formats { margin-top: 40px; font-size: .78rem; color: var(--ink-muted); }
+
+/* hub */
+.wrap:has(.hub) { max-width: 1080px; }
+.filters { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; }
+.filters label { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-muted); display: flex; flex-direction: column; gap: 4px; }
+.filters select { font: inherit; text-transform: none; letter-spacing: 0; color: var(--ink); padding: 6px 10px; border: 1px solid var(--ruled); border-radius: 6px; background: var(--white); }
+.trek-table { background: var(--white); }
+
+@media (max-width: 800px) {
+    .nav-links { gap: 14px; }
+    h1 { font-size: 1.9rem; }
+    .trek-table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+@media print {
+    .nav, .footer, .filters, .alt-formats { display: none; }
+    .faq details { display: block; }
+}

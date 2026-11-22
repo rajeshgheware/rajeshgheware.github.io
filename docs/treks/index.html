@@ -1,0 +1,76 @@
+---
+layout: base
+title: Treks
+description: Trek guides by Rajesh Gheware, starting with the Western Ghats. Each one lists distance, difficulty, season, permits and how to get there from Bengaluru.
+---
+<section class="hub">
+    <p class="section-label">Beyond Code</p>
+    <h1>Treks</h1>
+    <p class="lede">Trek guides with the same set of facts on every page, so you can compare them at a glance. Planned treks carry my pre-trek research; I add first-hand notes after each one.</p>
+
+    <div class="filters" role="group" aria-label="Filter treks">
+        <label>Difficulty
+            <select data-filter="difficulty">
+                <option value="">Any</option>
+                <option>easy</option><option>moderate</option><option>hard</option><option>expert</option>
+            </select>
+        </label>
+        <label>Month
+            <select data-filter="season">
+                <option value="">Any</option>
+                {% assign months = "jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec" | split: "," %}
+                {% for m in months %}<option value="{{ m }}">{{ m | upcase }}</option>{% endfor %}
+            </select>
+        </label>
+        <label>Region
+            <select data-filter="region">
+                <option value="">Any</option>
+                {% assign regions = site.treks | map: "region" | uniq | sort %}
+                {% for r in regions %}<option>{{ r }}</option>{% endfor %}
+            </select>
+        </label>
+    </div>
+
+    <table class="trek-table">
+        <thead><tr><th>Trek</th><th>Region</th><th>Difficulty</th><th>Km (round trip)</th><th>Days</th><th>Summit</th><th>Season</th><th>Status</th></tr></thead>
+        <tbody>
+        {% assign treks = site.treks | sort: "date" | reverse %}
+        {% for t in treks %}
+            <tr data-difficulty="{{ t.difficulty }}" data-region="{{ t.region }}" data-season="{{ t.best_season | join: ' ' }}">
+                <td><a href="{{ t.url }}">{{ t.peak | default: t.title }}</a></td>
+                <td>{{ t.region }}, {{ t.state }}</td>
+                <td><span class="diff diff-{{ t.difficulty }}">{{ t.difficulty }}</span></td>
+                <td>{% if t.distance_km.first %}{{ t.distance_km | join: "–" }}{% else %}{{ t.distance_km }}{% endif %}</td>
+                <td>{{ t.duration_days }}</td>
+                <td>{{ t.max_altitude_m }} m</td>
+                <td>{{ t.best_season | join: " " | upcase }}</td>
+                <td>{% if t.status == "planned" %}🎒 planned {{ t.planned_for }}{% else %}✅ done{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p class="empty" hidden>No treks match these filters.</p>
+    <p class="alt-formats">Machine-readable: <a href="/treks/index.json">index.json</a> · <a href="/llms.txt">llms.txt</a> · <a href="/treks/feed.xml">RSS</a></p>
+</section>
+
+<script>
+    (function () {
+        var selects = document.querySelectorAll('[data-filter]');
+        var rows = document.querySelectorAll('.trek-table tbody tr');
+        var empty = document.querySelector('.empty');
+        function apply() {
+            var shown = 0;
+            rows.forEach(function (row) {
+                var ok = Array.prototype.every.call(selects, function (s) {
+                    var v = s.value, key = s.dataset.filter;
+                    if (!v) return true;
+                    return key === 'season' ? row.dataset.season.split(' ').indexOf(v) > -1 : row.dataset[key] === v;
+                });
+                row.hidden = !ok;
+                if (ok) shown++;
+            });
+            empty.hidden = shown > 0;
+        }
+        selects.forEach(function (s) { s.addEventListener('change', apply); });
+    })();
+</script>
