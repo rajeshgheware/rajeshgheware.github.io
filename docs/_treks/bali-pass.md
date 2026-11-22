@@ -80,7 +80,8 @@ climbing over six months, and the steady 1,000-floor months mattered more than a
 **Final test, August 2021:** a few weeks before the trek I climbed **320 floors in 4 hours**, my best ever single
 session. At roughly 3 m per floor, that's close to 1,000 m of ascent in one go.
 
-The rest of my training (runs, rides and hikes) is on Strava.
+The rest of my training (runs, rides and hikes) is on Strava. For the full plan, read my guide:
+[How to train for a high-altitude trek like Bali Pass](/treks/guides/high-altitude-fitness/).
 
 ## My trek: September 2021
 

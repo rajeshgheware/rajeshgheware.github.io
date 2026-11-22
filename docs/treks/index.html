@@ -59,6 +59,12 @@ description: Trek guides by Rajesh Gheware, starting with the Western Ghats. Eac
         {% endfor %}</dl>
         <p>Where published ratings give a range (for example "easy to moderate"), I use the higher grade.</p>
     </details>
+    {% assign guides = site.pages | where: "guide", true %}
+    {% if guides.size > 0 %}
+    <h2>Guides</h2>
+    <ul class="guides">{% for g in guides %}<li><a href="{{ g.url }}">{{ g.title }}</a>: {{ g.tldr | truncatewords: 28 }}</li>{% endfor %}</ul>
+    {% endif %}
+
     <p class="alt-formats">Machine-readable: <a href="/treks/index.json">index.json</a> · <a href="/llms.txt">llms.txt</a> · <a href="/treks/feed.xml">RSS</a></p>
 </section>
 

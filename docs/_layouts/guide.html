@@ -1,0 +1,79 @@
+---
+layout: base
+---
+{%- assign g = page -%}
+<article class="trek guide">
+    {% if g.hero %}
+    <figure class="hero">
+        <img src="{{ g.hero }}" alt="{{ g.hero_alt | escape }}" style="object-position: {{ g.hero_position | default: 'center' }};" fetchpriority="high">
+    </figure>
+    {% endif %}
+    <p class="crumbs"><a href="/treks/">Treks</a> › Guides</p>
+    <h1>{{ g.title }}</h1>
+    <p class="byline">By Rajesh Gheware · Updated {{ g.last_verified | date: "%-d %b %Y" }}</p>
+
+    <section class="tldr" aria-label="Summary">
+        <h2>TL;DR</h2>
+        <p>{{ g.tldr }}</p>
+    </section>
+
+    <p class="status planned">⚕️ This is what has worked for me plus published guidance, not medical advice. See a doctor before you
+        start, especially if you're over 40 or have a heart, lung, blood-pressure or blood-sugar condition.</p>
+
+    <div class="body">
+        {{ content }}
+    </div>
+
+    {% if g.faq %}
+    <section class="faq">
+        <h2>FAQ</h2>
+        {% for f in g.faq %}
+        <details>
+            <summary>{{ f.q }}</summary>
+            <p>{{ f.a }}</p>
+        </details>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if g.sources %}
+    <section class="sources">
+        <h2>Sources</h2>
+        <ul>{% for s in g.sources %}<li><a href="{{ s.url }}" rel="noopener" target="_blank">{{ s.title }}</a></li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    {% if g.related_treks %}
+    <section class="related">
+        <h2>Treks this applies to</h2>
+        <ul>{% for slug in g.related_treks %}{% assign rt = site.treks | where_exp: "x", "x.url contains slug" | first %}{% if rt %}<li><a href="{{ rt.url }}">{{ rt.title }}</a> · {{ rt.difficulty }}</li>{% endif %}{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    <p class="alt-formats">For agents and feeds: <a href="/treks/index.json">trek data (JSON)</a> · <a href="/llms.txt">llms.txt</a> · <a href="/treks/feed.xml">RSS</a></p>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": {{ g.title | jsonify }},
+      "description": {{ g.description | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "datePublished": {{ g.date | date_to_xmlschema | jsonify }},
+      "dateModified": {{ g.last_verified | date_to_xmlschema | jsonify }},
+      "author": { "@type": "Person", "name": "Rajesh Gheware", "url": "https://rajeshgheware.github.io/" },
+      "keywords": {{ g.tags | join: ", " | jsonify }}{% if g.hero %},
+      "image": {{ g.hero | absolute_url | jsonify }}{% endif %}
+    }{% if g.faq %},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [{% for f in g.faq %}
+        { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>

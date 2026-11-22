@@ -73,5 +73,8 @@ is usually over Kongmaru La (about 5,200 m) to Shang Sumdo or Chogdo. The exact 
 I didn't make the summit. On summit day, severe lower back pain and a lack of physical energy made me turn back
 before the top. On a 6,000 m peak, turning around when your body says no is the right call.
 
+I've since added core, lower-back and summit-day fuelling sections to my
+[high-altitude training guide](/treks/guides/high-altitude-fitness/).
+
 *More notes coming soon: how the approach days went, where summit day fell apart and what I'm changing in my training
 and preparation for next time.*
