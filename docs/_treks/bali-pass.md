@@ -56,6 +56,25 @@ valley trail. The second half is remote and much steeper.
 Dehradun → Sankri is a long mountain drive, and most groups spend the night in Sankri before starting. The end point
 (Janki Chatti) is about 8 hours' drive back to Dehradun.
 
+## How I prepared: apartment stair climbing
+
+I had no mountains on my doorstep, so my main Bali Pass training was climbing the stairs of my apartment block,
+logged session by session in a spreadsheet:
+
+| Month (2021) | Floors climbed | Sessions | Biggest session |
+|---|---|---|---|
+| January | 1,069 | 12 | 208 floors |
+| February | 1,000 | 13 | 100 floors |
+| March | 1,000 | 13 | 100 floors |
+| April | 1,000 | 12 | 100 floors |
+| May | 1,000 | 10 | 100 floors |
+| June | 824 | 7 | 224 floors |
+| **Total** | **5,893** | **67** | |
+
+Most sessions were 50–100 floors, almost all done non-stop. At roughly 3 m per floor, that is about 17,000+ m of
+climbing over six months, and the steady 1,000-floor months mattered more than any single big day. The rest of my
+training (runs, rides and hikes) is on Strava.
+
 ## My trek: September 2021
 
 *My first-hand notes are coming soon: summit-day conditions, the descent and photos from the pass.*

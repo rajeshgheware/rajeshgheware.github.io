@@ -20,7 +20,7 @@ elevation_gain_m: 1600     # ~100 m at Kukke to 1,712 m summit
 best_season: [oct, nov, dec, jan, feb]
 trailhead: Kukke Subramanya temple town (Dakshina Kannada). Alternative start at Beedahalli, Somwarpet side (Kodagu)
 from_bengaluru: About 280 km. Overnight KSRTC bus to Kukke Subramanya, or train to Subrahmanya Road station
-permit: "Required. Book online on Aranya Vihaara (Karnataka Forest Dept), reportedly 1–15 days ahead, about ₹350 + GST per person, with a daily cap"
+permit: "Required. Book online on Aranya Vihaara (Karnataka Forest Dept), slots open up to 30 days ahead (since July 2026), about ₹350 + GST per person, daily cap, Forest Department guide per group"
 gpx:                       # add /treks/gpx/kumara-parvatha.gpx after the trek
 tags: [kumara parvatha, pushpagiri, kukke subramanya, western ghats, karnataka trek, weekend trek from bengaluru]
 
@@ -59,6 +59,7 @@ sources:
   - { title: "Wikipedia — Pushpagiri (mountain)", url: "https://en.wikipedia.org/wiki/Pushpagiri_(mountain)" }
   - { title: "Indiahikes — Kumara Parvatha trek", url: "https://indiahikes.com/documented-trek/kumara-parvatha-trek" }
   - { title: "Elneeru — routes, permits and timings", url: "https://elneeru.in/blog/kumara-parvatha-trek/" }
+  - { title: "News Karnataka — Forest Department revises trekking booking rules (Jul 2026)", url: "https://newskarnataka.com/karnataka/mangaluru/karnataka-forest-department-revises-trekking-booking-rules/23072026/" }
 ---
 
 ## Why it's on my list
@@ -99,8 +100,10 @@ You come down the same way. It is hard on the knees, so trekking poles help.
 
 ## Permits and booking
 
-Book on the [Aranya Vihaara portal](https://aranyavihaara.karnataka.gov.in). Sources report that slots open about
-15 days ahead, cost about ₹350 + GST per person and have a daily cap. Weekends in the peak season sell out.
+Book on the [Aranya Vihaara portal](https://aranyavihaara.karnataka.gov.in). Since July 2026, slots open up to
+30 days ahead (previously 15). Fees are reported at about ₹350 + GST per person, there's a daily cap, and the
+Forest Department assigns a guide to each group of ten. Cancelling at least seven days before the trek gets a 50%
+refund. Weekends in the peak season sell out.
 Carry the ID you booked with. *Check all of this on the portal, because it changes.*
 
 ## Packing list

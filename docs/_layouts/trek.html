@@ -3,6 +3,12 @@ layout: base
 ---
 {%- assign t = page -%}
 <article class="trek">
+    {% if t.hero %}
+    <figure class="hero">
+        <img src="{{ t.hero }}" alt="{{ t.hero_alt | escape }}" style="object-position: {{ t.hero_position | default: 'center' }};" fetchpriority="high">
+        {% if t.hero_caption %}<figcaption>{{ t.hero_caption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
     <p class="crumbs"><a href="/treks/">Treks</a> › {{ t.region }}</p>
     <h1>{{ t.title }}</h1>
 
@@ -83,7 +89,8 @@ layout: base
       "dateModified": {{ t.last_verified | date_to_xmlschema | jsonify }},
       "author": { "@type": "Person", "name": "Rajesh Gheware", "url": "https://rajeshgheware.github.io/" },
       "about": { "@id": {{ page.url | absolute_url | append: "#place" | jsonify }} },
-      "keywords": {{ t.tags | join: ", " | jsonify }}
+      "keywords": {{ t.tags | join: ", " | jsonify }}{% if t.hero %},
+      "image": {{ t.hero | absolute_url | jsonify }}{% endif %}
     },
     {
       "@type": {{ t.place_type | default: "Mountain" | jsonify }},
