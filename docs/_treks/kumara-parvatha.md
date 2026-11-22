@@ -5,7 +5,8 @@ date: 2026-11-22
 last_verified: 2026-11-22
 status: planned            # planned | done
 planned_for: "2027"
-# date_done: 2027-01-15    # set when done, and switch status to done
+trek_year: 2027
+# date_done: "Jan 2027"   # free text; set when done and switch status to done
 
 peak: Kumara Parvatha (Pushpagiri)
 peak_geo: { lat: 12.6667, lon: 75.6833 }   # Wikipedia, arc-minute precision

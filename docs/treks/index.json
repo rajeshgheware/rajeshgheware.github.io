@@ -1,7 +1,7 @@
 ---
 layout: null
 ---
-{%- assign treks = site.treks | sort: "date" | reverse -%}
+{%- assign treks = site.treks | sort: "trek_year" | reverse -%}
 {
   "title": "Treks by Rajesh Gheware",
   "home_page_url": "{{ site.url }}/treks/",
@@ -14,6 +14,8 @@ layout: null
       "title": {{ t.title | jsonify }},
       "url": {{ t.url | absolute_url | jsonify }},
       "status": {{ t.status | jsonify }},
+      "trek_year": {{ t.trek_year | jsonify }},
+      "place_type": {{ t.place_type | default: "Mountain" | jsonify }},
       "planned_for": {{ t.planned_for | jsonify }},
       "date_done": {{ t.date_done | jsonify }},
       "last_verified": {{ t.last_verified | date: "%Y-%m-%d" | jsonify }},
@@ -21,7 +23,7 @@ layout: null
       "state": {{ t.state | jsonify }},
       "peak_geo": {{ t.peak_geo | jsonify }},
       "difficulty": {{ t.difficulty | jsonify }},
-      "distance_km_round_trip": {{ t.distance_km | jsonify }},
+      "distance_km_total": {{ t.distance_km | jsonify }},
       "duration_days": {{ t.duration_days | jsonify }},
       "max_altitude_m": {{ t.max_altitude_m | jsonify }},
       "elevation_gain_m": {{ t.elevation_gain_m | jsonify }},

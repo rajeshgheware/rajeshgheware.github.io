@@ -32,19 +32,20 @@ description: Trek guides by Rajesh Gheware, starting with the Western Ghats. Eac
     </div>
 
     <table class="trek-table">
-        <thead><tr><th>Trek</th><th>Region</th><th>Difficulty</th><th>Km (round trip)</th><th>Days</th><th>Summit</th><th>Season</th><th>Status</th></tr></thead>
+        <thead><tr><th>Trek</th><th>Region</th><th>Difficulty</th><th>Km</th><th>Days</th><th>Max alt.</th><th>Year</th><th>Season</th><th></th></tr></thead>
         <tbody>
-        {% assign treks = site.treks | sort: "date" | reverse %}
+        {% assign treks = site.treks | sort: "trek_year" | reverse %}
         {% for t in treks %}
             <tr data-difficulty="{{ t.difficulty }}" data-region="{{ t.region }}" data-season="{{ t.best_season | join: ' ' }}">
                 <td><a href="{{ t.url }}">{{ t.peak | default: t.title }}</a></td>
                 <td>{{ t.region }}, {{ t.state }}</td>
                 <td><span class="diff diff-{{ t.difficulty }}">{{ t.difficulty }}</span></td>
-                <td>{% if t.distance_km.first %}{{ t.distance_km | join: "–" }}{% else %}{{ t.distance_km }}{% endif %}</td>
-                <td>{{ t.duration_days }}</td>
-                <td>{{ t.max_altitude_m }} m</td>
+                <td>{% include range.html v=t.distance_km %}</td>
+                <td>{% include range.html v=t.duration_days %}</td>
+                <td>{% if t.max_altitude_m %}{{ t.max_altitude_m }} m{% endif %}</td>
+                <td>{{ t.trek_year }}</td>
                 <td>{{ t.best_season | join: " " | upcase }}</td>
-                <td>{% if t.status == "planned" %}🎒 planned {{ t.planned_for }}{% else %}✅ done{% endif %}</td>
+                <td>{% if t.status == "planned" %}🎒 planned{% else %}✅ done{% endif %}</td>
             </tr>
         {% endfor %}
         </tbody>

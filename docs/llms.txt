@@ -11,5 +11,5 @@ layout: null
 ## Treks
 
 Trek guides with the same structured facts on every page (distance, difficulty, season, permits, transport from Bengaluru). All data as JSON: [treks/index.json]({{ site.url }}/treks/index.json). Index: [treks]({{ site.url }}/treks/).
-{% assign treks = site.treks | sort: "date" | reverse %}{% for t in treks %}
-- [{{ t.title }}]({{ t.url | absolute_url }}): {{ t.difficulty }}, {% if t.distance_km.first %}{{ t.distance_km | join: "–" }}{% else %}{{ t.distance_km }}{% endif %} km round trip, {{ t.max_altitude_m }} m, best {{ t.best_season | join: "/" }}. {% if t.status == "planned" %}Pre-trek research (planned {{ t.planned_for }}).{% else %}Trekked {{ t.date_done | date: "%Y-%m-%d" }}.{% endif %} Last verified {{ t.last_verified | date: "%Y-%m-%d" }}.{% endfor %}
+{% assign treks = site.treks | sort: "trek_year" | reverse %}{% for t in treks %}
+- [{{ t.title }}]({{ t.url | absolute_url }}): {{ t.difficulty }}{% if t.distance_km %}, {% include range.html v=t.distance_km %} km{% endif %}{% if t.max_altitude_m %}, {{ t.max_altitude_m }} m{% endif %}, best {{ t.best_season | join: "/" }}. {% if t.status == "planned" %}Pre-trek research (planned {{ t.planned_for }}).{% else %}Trekked {{ t.date_done }}.{% endif %} Last verified {{ t.last_verified | date: "%Y-%m-%d" }}.{% endfor %}

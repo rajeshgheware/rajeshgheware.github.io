@@ -2,7 +2,6 @@
 layout: base
 ---
 {%- assign t = page -%}
-{%- capture dist -%}{% if t.distance_km.first %}{{ t.distance_km | join: "–" }}{% else %}{{ t.distance_km }}{% endif %} km{%- endcapture -%}
 <article class="trek">
     <p class="crumbs"><a href="/treks/">Treks</a> › {{ t.region }}</p>
     <h1>{{ t.title }}</h1>
@@ -11,7 +10,8 @@ layout: base
     <p class="status planned">🎒 <strong>Bucket list, planned for {{ t.planned_for }}.</strong>
         This is my pre-trek research guide. I'll update it with first-hand notes, photos and a GPX track after the trek.</p>
     {% else %}
-    <p class="status done">✅ Trekked on {{ t.date_done | date: "%-d %b %Y" }}.</p>
+    <p class="status done">✅ <strong>Trekked {{ t.date_done }}.</strong>{% if t.notes_pending %}
+        The facts below are researched and sourced. My own trip notes and photos are being added.{% endif %}</p>
     {% endif %}
 
     <section class="tldr" aria-label="Summary">
@@ -23,10 +23,10 @@ layout: base
         <h2>Trek facts</h2>
         <dl>
             <div><dt>Difficulty</dt><dd class="diff diff-{{ t.difficulty }}">{{ t.difficulty | capitalize }}</dd></div>
-            <div><dt>Distance (round trip)</dt><dd>{{ dist }}</dd></div>
-            <div><dt>Duration</dt><dd>{{ t.duration_days }} day{% if t.duration_days > 1 %}s{% endif %}</dd></div>
-            <div><dt>Summit</dt><dd>{{ t.max_altitude_m }} m</dd></div>
-            <div><dt>Elevation gain</dt><dd>~{{ t.elevation_gain_m }} m</dd></div>
+            {% if t.distance_km %}<div><dt>Total distance</dt><dd>{% include range.html v=t.distance_km %} km</dd></div>{% endif %}
+            {% if t.duration_days %}<div><dt>Duration</dt><dd>{% include range.html v=t.duration_days %} {% if t.duration_days == 1 %}day{% else %}days{% endif %}</dd></div>{% endif %}
+            {% if t.max_altitude_m %}<div><dt>Max altitude</dt><dd>{{ t.max_altitude_m }} m</dd></div>{% endif %}
+            {% if t.elevation_gain_m %}<div><dt>Elevation gain</dt><dd>~{{ t.elevation_gain_m }} m</dd></div>{% endif %}
             <div><dt>Best season</dt><dd>{{ t.best_season | join: ", " | upcase }}</dd></div>
             <div><dt>Trailhead</dt><dd>{{ t.trailhead }}</dd></div>
             <div><dt>From Bengaluru</dt><dd>{{ t.from_bengaluru }}</dd></div>
@@ -59,11 +59,11 @@ layout: base
     </section>
     {% endif %}
 
-    {%- assign others = site.treks | where_exp: "x", "x.url != page.url" -%}
+    {%- assign others = site.treks | where_exp: "x", "x.url != page.url" | sort: "trek_year" | reverse -%}
     {% if others.size > 0 %}
     <section class="related">
         <h2>More treks</h2>
-        <ul>{% for o in others limit: 4 %}<li><a href="{{ o.url }}">{{ o.title }}</a> · {{ o.difficulty }}</li>{% endfor %}</ul>
+        <ul>{% for o in others limit: 5 %}<li><a href="{{ o.url }}">{{ o.title }}</a> · {{ o.difficulty }}</li>{% endfor %}</ul>
     </section>
     {% endif %}
 
@@ -86,10 +86,10 @@ layout: base
       "keywords": {{ t.tags | join: ", " | jsonify }}
     },
     {
-      "@type": "Mountain",
+      "@type": {{ t.place_type | default: "Mountain" | jsonify }},
       "@id": {{ page.url | absolute_url | append: "#place" | jsonify }},
       "name": {{ t.peak | jsonify }},
-      "geo": { "@type": "GeoCoordinates", "latitude": {{ t.peak_geo.lat }}, "longitude": {{ t.peak_geo.lon }}, "elevation": {{ t.max_altitude_m }} },
+      {% if t.peak_geo %}"geo": { "@type": "GeoCoordinates", "latitude": {{ t.peak_geo.lat }}, "longitude": {{ t.peak_geo.lon }}{% if t.max_altitude_m %}, "elevation": {{ t.max_altitude_m }}{% endif %} },{% endif %}
       "containedInPlace": { "@type": "AdministrativeArea", "name": {{ t.state | jsonify }} }
     }{% if t.faq %},
     {
