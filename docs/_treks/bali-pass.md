@@ -75,8 +75,12 @@ logged session by session in a spreadsheet:
 | **Total** | **5,893** | **67** | |
 
 Most sessions were 50–100 floors, almost all done non-stop. At roughly 3 m per floor, that is about 17,000+ m of
-climbing over six months, and the steady 1,000-floor months mattered more than any single big day. The rest of my
-training (runs, rides and hikes) is on Strava.
+climbing over six months, and the steady 1,000-floor months mattered more than any single big day.
+
+**Final test, August 2021:** a few weeks before the trek I climbed **320 floors in 4 hours**, my best ever single
+session. At roughly 3 m per floor, that's close to 1,000 m of ascent in one go.
+
+The rest of my training (runs, rides and hikes) is on Strava.
 
 ## My trek: September 2021
 
