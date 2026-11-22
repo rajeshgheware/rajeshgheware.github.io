@@ -7,6 +7,9 @@ status: done
 date_done: "Sep 2021"
 trek_year: 2021
 notes_pending: true
+hero: /treks/img/bali-pass.jpg
+hero_alt: "High camp tent pitched in snow below a rock face on the Bali Pass trek, Uttarakhand"
+hero_position: "center 60%"
 peak: Bali Pass
 place_type: Place
 region: Garhwal Himalaya

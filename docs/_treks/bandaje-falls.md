@@ -7,6 +7,9 @@ status: done
 date_done: "2012"
 trek_year: 2012
 notes_pending: true
+hero: /treks/img/bandaje-falls.jpg
+hero_alt: "Bandaje Arbi Falls pouring over a misty cliff in the Charmadi Ghats"
+hero_position: "center 50%"
 peak: Bandaje Arbi Falls
 place_type: Waterfall
 region: Western Ghats

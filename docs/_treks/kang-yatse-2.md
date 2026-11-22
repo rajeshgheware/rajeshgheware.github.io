@@ -8,6 +8,9 @@ date_done: "6–13 Sep 2025"
 trek_year: 2025
 summited: false             # turned back on summit day
 notes_pending: true
+hero: /treks/img/kang-yatse-2.jpg
+hero_alt: "A yak grazing on high pasture below the snow-capped Kang Yatse massif, Markha Valley, Ladakh"
+hero_position: "center 55%"
 peak: Kang Yatse 2
 place_type: Mountain
 region: Ladakh

@@ -7,6 +7,9 @@ status: done
 date_done: "Oct 2022"
 trek_year: 2022
 notes_pending: true
+hero: /treks/img/everest-base-camp.jpg
+hero_alt: 'Rajesh Gheware at the painted "Everest Base Camp 5364m" boulder on the Khumbu Glacier'
+hero_position: "center 50%"
 peak: Everest Base Camp
 place_type: Place
 region: Nepal Himalaya

@@ -7,6 +7,9 @@ status: done
 date_done: "5 May 2012"
 trek_year: 2012
 notes_pending: true
+hero: /treks/img/kudremukh.jpg
+hero_alt: "Rolling green hills and shola forest under cloud in Kudremukh National Park"
+hero_position: "center 45%"
 peak: Kudremukh Peak
 place_type: Mountain
 region: Western Ghats

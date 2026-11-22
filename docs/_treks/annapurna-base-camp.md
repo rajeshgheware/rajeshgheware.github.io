@@ -7,6 +7,9 @@ status: done
 date_done: "Apr 2018"
 trek_year: 2018
 notes_pending: true
+hero: /treks/img/annapurna-base-camp.jpg
+hero_alt: "First light turning Annapurna I gold above Annapurna Base Camp"
+hero_position: "center 35%"
 peak: Annapurna Base Camp
 place_type: Place
 region: Nepal Himalaya
