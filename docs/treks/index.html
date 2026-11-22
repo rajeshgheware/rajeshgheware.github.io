@@ -51,6 +51,14 @@ description: Trek guides by Rajesh Gheware, starting with the Western Ghats. Eac
         </tbody>
     </table>
     <p class="empty" hidden>No treks match these filters.</p>
+
+    <details class="scale">
+        <summary>How I grade difficulty</summary>
+        <dl>
+        {% for d in site.data.difficulty %}<div><dt><span class="diff diff-{{ d.level }}">{{ d.level }}</span></dt><dd>{{ d.meaning }}</dd></div>
+        {% endfor %}</dl>
+        <p>Where published ratings give a range (for example "easy to moderate"), I use the higher grade.</p>
+    </details>
     <p class="alt-formats">Machine-readable: <a href="/treks/index.json">index.json</a> · <a href="/llms.txt">llms.txt</a> · <a href="/treks/feed.xml">RSS</a></p>
 </section>
 

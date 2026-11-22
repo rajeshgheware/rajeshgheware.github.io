@@ -1,0 +1,10 @@
+# Single source for the difficulty scale shown on /treks/, in index.json and llms.txt.
+# Tie-break: when published ratings give a range (e.g. 'easy to moderate'), use the higher grade.
+- level: easy
+  meaning: "Short walks with little climbing and no altitude."
+- level: moderate
+  meaning: "Day hikes up to about 20 km or 1,000 m of climbing, or multi-day treks staying below about 4,200 m on good trails."
+- level: hard
+  meaning: "Very long or steep days (1,200 m+ of climbing), or multi-day treks reaching 4,500–5,500 m on non-technical trails."
+- level: expert
+  meaning: "Remote high passes with steep, exposed snow or boulder sections, or summits above 6,000 m. Prior high-altitude experience essential."

@@ -7,6 +7,7 @@ layout: null
   "home_page_url": "{{ site.url }}/treks/",
   "updated": {{ site.time | date_to_xmlschema | jsonify }},
   "note": "Facts are pre-trek research unless status is 'done'. Fees and rules change; check last_verified and the official portal.",
+  "difficulty_scale": {{ site.data.difficulty | jsonify }},
   "treks": [
   {%- for t in treks %}
     {

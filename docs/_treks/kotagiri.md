@@ -13,7 +13,7 @@ peak: Kotagiri, Nilgiris
 place_type: Place
 region: Nilgiris
 state: Tamil Nadu
-difficulty: easy
+difficulty: moderate
 duration_days: [2, 3]
 best_season: [apr, may, jun, sep, oct, nov, dec]
 trailhead: "Kotagiri town (Nilgiris district), east of Ooty"
