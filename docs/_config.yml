@@ -19,6 +19,11 @@ collections:
     permalink: /rides/:name/
 
 defaults:
+  # Verification files (Google Search Console, IndexNow) stay out of the sitemap.
+  - scope: { path: "google6e702c5775a34b6b.html" }
+    values: { sitemap: false }
+  - scope: { path: "0e4d82b72820072fda81b256b4e8bb93.txt" }
+    values: { sitemap: false }
   - scope: { path: "", type: treks }
     values: { layout: trek }
   - scope: { path: "", type: rides }
