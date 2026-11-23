@@ -1,7 +1,7 @@
 # Jekyll config — GitHub Pages builds this automatically on push (no local build needed).
 # index.html has no front matter, so Jekyll copies it unchanged.
 title: Rajesh Gheware
-description: Chief Architect, AI & DevOps trainer — and a trekker.
+description: Chief Architect, AI & DevOps trainer — and a trekker and long-distance cyclist.
 url: https://rajeshgheware.github.io
 baseurl: ""
 author: Rajesh Gheware
@@ -14,13 +14,20 @@ collections:
   treks:
     output: true
     permalink: /treks/:name/
+  rides:
+    output: true
+    permalink: /rides/:name/
 
 defaults:
   - scope: { path: "", type: treks }
     values: { layout: trek }
+  - scope: { path: "", type: rides }
+    values: { layout: ride }
 
 feed:
   collections:
     treks:
       path: /treks/feed.xml
+    rides:
+      path: /rides/feed.xml
 

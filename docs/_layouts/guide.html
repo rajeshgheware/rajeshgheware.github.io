@@ -8,7 +8,7 @@ layout: base
         <img src="{{ g.hero }}" alt="{{ g.hero_alt | escape }}" style="object-position: {{ g.hero_position | default: 'center' }};" fetchpriority="high">
     </figure>
     {% endif %}
-    <p class="crumbs"><a href="/treks/">Treks</a> › Guides</p>
+    <p class="crumbs">{% if g.pillar == "rides" %}<a href="/rides/">Rides</a>{% else %}<a href="/treks/">Treks</a>{% endif %} › Guides</p>
     <h1>{{ g.title }}</h1>
     <p class="byline">By Rajesh Gheware · Updated {{ g.last_verified | date: "%-d %b %Y" }}</p>
 
@@ -50,7 +50,14 @@ layout: base
     </section>
     {% endif %}
 
-    <p class="alt-formats">For agents and feeds: <a href="/treks/index.json">trek data (JSON)</a> · <a href="/llms.txt">llms.txt</a> · <a href="/treks/feed.xml">RSS</a></p>
+    {% if g.related_rides %}
+    <section class="related">
+        <h2>Rides this draws on</h2>
+        <ul>{% for slug in g.related_rides %}{% assign rr = site.rides | where_exp: "x", "x.url contains slug" | first %}{% if rr %}<li><a href="{{ rr.url }}">{{ rr.title }}</a></li>{% endif %}{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    <p class="alt-formats">For agents and feeds: <a href="/treks/index.json">trek data (JSON)</a> · <a href="/rides/index.json">ride data (JSON)</a> · <a href="/llms.txt">llms.txt</a></p>
 </article>
 
 <script type="application/ld+json">

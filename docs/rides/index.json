@@ -1,0 +1,40 @@
+---
+layout: null
+---
+{%- assign rides = site.rides | sort: "ride_date" | reverse -%}
+{
+  "title": "Rides by Rajesh Gheware",
+  "home_page_url": "{{ site.url }}/rides/",
+  "updated": {{ site.time | date_to_xmlschema | jsonify }},
+  "note": "Distance, climbing and moving time are GPS values from the rider's Strava log. Moving time excludes stops. BRM time limits follow ACP rules.",
+  "guides": [{% assign guides = site.pages | where: "pillar", "rides" %}{% for g in guides %}
+    { "title": {{ g.title | jsonify }}, "url": {{ g.url | absolute_url | jsonify }}, "updated": {{ g.last_verified | date: "%Y-%m-%d" | jsonify }}, "tldr": {{ g.tldr | jsonify }} }{% unless forloop.last %},{% endunless %}{% endfor %}
+  ],
+  "yearly_totals": {{ site.data.ride_years | jsonify }},
+  "brevet_log": {{ site.data.brevets | jsonify }},
+  "rides": [
+  {%- for r in rides %}
+    {
+      "name": {{ r.event | jsonify }},
+      "title": {{ r.title | jsonify }},
+      "url": {{ r.url | absolute_url | jsonify }},
+      "type": {{ r.ride_type | jsonify }},
+      "brevet_km": {{ r.brevet_km | jsonify }},
+      "time_limit_h": {{ r.time_limit_h | jsonify }},
+      "result": {{ r.result | jsonify }},
+      "date": {{ r.ride_date | date: "%Y-%m-%d" | jsonify }},
+      "date_done": {{ r.date_done | jsonify }},
+      "days": {{ r.days | jsonify }},
+      "distance_km": {{ r.distance_km | jsonify }},
+      "elevation_gain_m": {{ r.elevation_gain_m | jsonify }},
+      "moving_time_h": {{ r.moving_time_h | jsonify }},
+      "region": {{ r.region | jsonify }},
+      "state": {{ r.state | jsonify }},
+      "stages": {{ r.stages | jsonify }},
+      "tldr": {{ r.tldr | jsonify }},
+      "faq": {{ r.faq | jsonify }},
+      "sources": {{ r.sources | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {%- endfor %}
+  ]
+}

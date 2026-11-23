@@ -1,0 +1,6 @@
+# Yearly totals of Strava activities of type "Ride" (checked 2026-11-23; 2026 is to 29 Oct). Moving time in hours.
+- { year: 2022, rides: 50, km: 1308, gain_m: 12576, hours: 93, note: "from March" }
+- { year: 2023, rides: 60, km: 3659, gain_m: 35049, hours: 225 }
+- { year: 2024, rides: 106, km: 1880, gain_m: 30129, hours: 156 }
+- { year: 2025, rides: 28, km: 938, gain_m: 10565, hours: 69 }
+- { year: 2026, rides: 14, km: 107, gain_m: 1964, hours: 11, note: "to 29 Oct" }

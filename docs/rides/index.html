@@ -1,0 +1,95 @@
+---
+layout: base
+title: Rides
+description: Long-distance cycling by Rajesh Gheware from Bengaluru, India — brevets (BRMs) up to 400 km and four-day Tour of Karnataka (TOK) rides, with distance, climbing and moving time from Strava on every page.
+image: /rides/img/rides-hub.jpg
+---
+<section class="hub">
+    <p class="section-label">Beyond Code</p>
+    <h1>Rides</h1>
+    <p class="lede">Long-distance cycling from Bengaluru: brevets (BRMs) up to 400 km and four-day tours across Karnataka on the <a href="https://tourofkarnataka.com/" rel="noopener" target="_blank">Tour of Karnataka</a> (TOK).
+        Every page gives the same numbers from my Strava log, so you can compare rides at a glance. Since March 2022 I've
+        logged {% assign totn = 0 %}{% for y in site.data.ride_years %}{% assign totn = totn | plus: y.rides %}{% endfor %}<strong>{{ totn }} rides and nearly 7,900 km</strong>.</p>
+
+    <div class="filters" role="group" aria-label="Filter rides">
+        <label>Type
+            <select data-filter="type">
+                <option value="">Any</option>
+                <option value="brevet">Brevet (BRM)</option><option value="tour">Multi-day tour</option>
+            </select>
+        </label>
+        <label>Year
+            <select data-filter="year">
+                <option value="">Any</option>
+                {% assign years = site.rides | map: "ride_year" | uniq | sort | reverse %}
+                {% for y in years %}<option>{{ y }}</option>{% endfor %}
+            </select>
+        </label>
+    </div>
+
+    <table class="trek-table ride-table">
+        <thead><tr><th>Ride</th><th>Type</th><th>Date</th><th>Km</th><th>Climbing</th><th>Days</th><th>Moving time</th></tr></thead>
+        <tbody>
+        {% assign rides = site.rides | sort: "ride_date" | reverse %}
+        {% for r in rides %}
+            <tr data-type="{{ r.ride_type }}" data-year="{{ r.ride_year }}">
+                <td><a href="{{ r.url }}">{{ r.event }}</a></td>
+                <td>{% if r.ride_type == "brevet" %}{{ r.brevet_km }} km BRM{% else %}Tour{% endif %}</td>
+                <td>{{ r.date_done }}</td>
+                <td>{{ r.distance_km }}</td>
+                <td>{{ r.elevation_gain_m }} m</td>
+                <td>{{ r.days }}</td>
+                <td>{{ r.moving_time_h }} h</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p class="empty" hidden>No rides match these filters.</p>
+
+    <h2>Brevet log</h2>
+    <p>Every BRM in my Strava log. Distances are as recorded by GPS.</p>
+    <table class="trek-table">
+        <thead><tr><th>Date</th><th>Brevet</th><th>Distance</th><th>Recorded</th><th>Climbing</th><th>Note</th></tr></thead>
+        <tbody>{% assign brevets = site.data.brevets | sort: "date" | reverse %}{% for b in brevets %}
+            <tr><td>{% if b.month_only %}{{ b.date | date: "%b %Y" }}{% else %}{{ b.date | date: "%-d %b %Y" }}{% endif %}</td>
+                <td>{% if b.post %}<a href="/rides/{{ b.post }}/">{{ b.name }}</a>{% else %}{{ b.name }}{% endif %}</td>
+                <td>{{ b.brevet_km }} km</td><td>{{ b.recorded_km }} km</td><td>{% if b.gain_m %}{{ b.gain_m }} m{% endif %}</td><td>{{ b.note }}</td></tr>{% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Year by year</h2>
+    <table class="trek-table">
+        <thead><tr><th>Year</th><th>Rides</th><th>Distance</th><th>Climbing</th><th>Moving time</th></tr></thead>
+        <tbody>{% for y in site.data.ride_years reversed %}
+            <tr><td>{{ y.year }}{% if y.note %} <span class="verified">({{ y.note }})</span>{% endif %}</td><td>{{ y.rides }}</td><td>{{ y.km }} km</td><td>{{ y.gain_m }} m</td><td>{{ y.hours }} h</td></tr>{% endfor %}
+        </tbody>
+    </table>
+
+    {% assign guides = site.pages | where: "pillar", "rides" %}
+    {% if guides.size > 0 %}
+    <h2>Guides</h2>
+    <ul class="guides">{% for g in guides %}<li><a href="{{ g.url }}">{{ g.title }}</a>: {{ g.tldr | truncatewords: 28 }}</li>{% endfor %}</ul>
+    {% endif %}
+
+    <p class="alt-formats">Machine-readable: <a href="/rides/index.json">index.json</a> · <a href="/llms.txt">llms.txt</a> · <a href="/rides/feed.xml">RSS</a></p>
+</section>
+
+<script>
+    (function () {
+        var selects = document.querySelectorAll('[data-filter]');
+        var rows = document.querySelectorAll('.ride-table tbody tr');
+        var empty = document.querySelector('.empty');
+        function apply() {
+            var shown = 0;
+            rows.forEach(function (row) {
+                var ok = Array.prototype.every.call(selects, function (s) {
+                    return !s.value || row.dataset[s.dataset.filter] === s.value;
+                });
+                row.hidden = !ok;
+                if (ok) shown++;
+            });
+            empty.hidden = shown > 0;
+        }
+        selects.forEach(function (s) { s.addEventListener('change', apply); });
+    })();
+</script>

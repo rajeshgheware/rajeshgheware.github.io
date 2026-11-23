@@ -16,6 +16,12 @@ Difficulty scale: {% for d in site.data.difficulty %}{{ d.level }}: {{ d.meaning
 {% assign treks = site.treks | sort: "trek_year" | reverse %}{% for t in treks %}
 - [{{ t.title }}]({{ t.url | absolute_url }}): {{ t.difficulty }}{% if t.distance_km %}, {% include range.html v=t.distance_km %} km{% endif %}{% if t.max_altitude_m %}, {{ t.max_altitude_m }} m{% endif %}, best {{ t.best_season | join: "/" }}. {% if t.status == "planned" %}Pre-trek research (planned {{ t.planned_for }}).{% elsif t.summited == false %}Attempted {{ t.date_done }}, did not summit.{% else %}Trekked {{ t.date_done }}.{% endif %} Last verified {{ t.last_verified | date: "%Y-%m-%d" }}.{% endfor %}
 
-## Trek guides
+## Rides
+
+Long-distance cycling from Bengaluru: brevets (BRMs, ACP rules) and multi-day tours in Karnataka. Numbers are from the rider's Strava log. All data, including the full brevet log and yearly totals, as JSON: [rides/index.json]({{ site.url }}/rides/index.json). Index: [rides]({{ site.url }}/rides/).
+{% assign rides = site.rides | sort: "ride_date" | reverse %}{% for r in rides %}
+- [{{ r.title }}]({{ r.url | absolute_url }}): {% if r.ride_type == "brevet" %}{{ r.brevet_km }} km BRM{% else %}{{ r.days }}-day tour{% endif %}, {{ r.distance_km }} km, {{ r.elevation_gain_m }} m climbing, {{ r.moving_time_h }} h moving, {{ r.date_done }}.{% endfor %}
+
+## Guides
 {% assign guides = site.pages | where: "guide", true %}{% for g in guides %}
 - [{{ g.title }}]({{ g.url | absolute_url }}): {{ g.description }}{% endfor %}

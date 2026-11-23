@@ -1,0 +1,112 @@
+---
+layout: base
+---
+{%- assign r = page -%}
+<article class="trek ride">
+    {% if r.hero %}
+    <figure class="hero">
+        <img src="{{ r.hero }}" alt="{{ r.hero_alt | escape }}" style="object-position: {{ r.hero_position | default: 'center' }};" fetchpriority="high">
+    </figure>
+    {% endif %}
+    <p class="crumbs"><a href="/rides/">Rides</a> › {% if r.ride_type == "brevet" %}Brevets{% else %}Tours{% endif %}</p>
+    <h1>{{ r.title }}</h1>
+
+    <p class="status done">{% if r.result == "dnf" %}↩️ <strong>Rode {{ r.date_done }}, did not finish.</strong>{% else %}✅ <strong>Rode {{ r.date_done }}.</strong>{% endif %}{% if r.notes_pending %}
+        The numbers below are from my Strava log. My own ride notes and photos are being added.{% endif %}</p>
+
+    <section class="tldr" aria-label="Summary">
+        <h2>TL;DR</h2>
+        <p>{{ r.tldr }}</p>
+    </section>
+
+    <section class="facts" aria-label="Ride facts">
+        <h2>Ride facts</h2>
+        <dl>
+            <div><dt>Type</dt><dd>{% if r.ride_type == "brevet" %}Brevet (BRM){% else %}Multi-day tour{% endif %}</dd></div>
+            <div><dt>Distance (Strava)</dt><dd>{{ r.distance_km }} km{% if r.days > 1 %} over {{ r.days }} days{% endif %}</dd></div>
+            {% if r.elevation_gain_m %}<div><dt>Climbing</dt><dd>{{ r.elevation_gain_m }} m</dd></div>{% endif %}
+            {% if r.moving_time_h %}<div><dt>Moving time</dt><dd>{{ r.moving_time_h }} h</dd></div>{% endif %}
+            {% if r.time_limit_h %}<div><dt>Time limit</dt><dd>{{ r.time_limit_h }} h (ACP rule for {{ r.brevet_km }} km)</dd></div>{% endif %}
+            <div><dt>Region</dt><dd>{{ r.region }}, {{ r.state }}</dd></div>
+            {% if r.start %}<div><dt>Start</dt><dd>{{ r.start }}</dd></div>{% endif %}
+        </dl>
+        <p class="verified">Distance, climbing and moving time are as recorded by my GPS on Strava. Moving time leaves out stops, so it is shorter than total time on the road.</p>
+    </section>
+
+    {% if r.stages %}
+    <section aria-label="Stages">
+        <h2>Day by day</h2>
+        <table>
+            <thead><tr><th>Day</th><th>Route</th><th>Km</th><th>Climbing</th><th>Moving time</th></tr></thead>
+            <tbody>{% for s in r.stages %}<tr><td>{{ s.day }}</td><td>{{ s.route }}</td><td>{{ s.km }}</td><td>{{ s.gain_m }} m</td><td>{{ s.hours }} h</td></tr>{% endfor %}</tbody>
+        </table>
+    </section>
+    {% endif %}
+
+    <div class="body">
+        {{ content }}
+    </div>
+
+    {% if r.faq %}
+    <section class="faq">
+        <h2>FAQ</h2>
+        {% for f in r.faq %}
+        <details>
+            <summary>{{ f.q }}</summary>
+            <p>{{ f.a }}</p>
+        </details>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if r.sources %}
+    <section class="sources">
+        <h2>Sources</h2>
+        <ul>{% for s in r.sources %}<li><a href="{{ s.url }}" rel="noopener" target="_blank">{{ s.title }}</a></li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    {%- assign others = site.rides | where_exp: "x", "x.url != page.url" | sort: "ride_date" | reverse -%}
+    {% if others.size > 0 %}
+    <section class="related">
+        <h2>More rides</h2>
+        <ul>{% for o in others limit: 5 %}<li><a href="{{ o.url }}">{{ o.title }}</a> · {{ o.distance_km }} km</li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    <p class="alt-formats">For agents and feeds: <a href="/rides/index.json">ride data (JSON)</a> · <a href="/llms.txt">llms.txt</a> · <a href="/rides/feed.xml">RSS</a></p>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": {{ r.title | jsonify }},
+      "description": {{ r.description | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "datePublished": {{ r.date | date_to_xmlschema | jsonify }},
+      "dateModified": {{ r.last_verified | date_to_xmlschema | jsonify }},
+      "author": { "@type": "Person", "name": "Rajesh Gheware", "url": "https://rajeshgheware.github.io/" },
+      "about": { "@id": {{ page.url | absolute_url | append: "#event" | jsonify }} },
+      "keywords": {{ r.tags | join: ", " | jsonify }}{% if r.hero %},
+      "image": {{ r.hero | absolute_url | jsonify }}{% endif %}
+    },
+    {
+      "@type": "SportsEvent",
+      "@id": {{ page.url | absolute_url | append: "#event" | jsonify }},
+      "name": {{ r.event | jsonify }},
+      "sport": "Cycling",
+      "startDate": {{ r.ride_date | jsonify }},
+      "location": { "@type": "Place", "name": {{ r.region | append: ", " | append: r.state | jsonify }} }
+    }{% if r.faq %},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [{% for f in r.faq %}
+        { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} } }{% unless forloop.last %},{% endunless %}{% endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>
