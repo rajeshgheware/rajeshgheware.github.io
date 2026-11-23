@@ -1,9 +1,12 @@
 # Every ride in the Strava log whose title names a BRM (checked 2026-11-23). recorded_km is Strava's GPS distance.
 # DNFs confirmed by the user 2026-11-23 (Anchetty, Rajyotsava, Melukote): recorded_km is the distance covered.
-- { date: 2023-01-07, name: "Nandi Hills attempt (logged as 100 km BRM)", brevet_km: 100, recorded_km: 125.3, gain_m: 1059 }
+# 7 Jan 2023 (first attempt, DNF after 125 km) and 17 Jun 2023 300 BRM (DNS, no Strava ride) per Audax India results, confirmed by the user 2026-11-23.
+# Nandi Hills 2025 is LF (late finish) per Audax India results, confirmed by the user 2026-11-23.
+- { date: 2023-01-07, name: "200 km BRM (my first attempt)", brevet_km: 200, recorded_km: 125.3, gain_m: 1059, note: "DNF (did not finish): ran out of energy after 125 km" }
 - { date: 2023-05-06, name: "Minchina Ota night BRM", brevet_km: 200, recorded_km: 202.0, gain_m: 1773, post: minchina-ota-200-brm }
-- { date: 2023-06-01, month_only: true, name: "Anchetty BRM", brevet_km: 200, recorded_km: 85.6, note: "DNF (did not finish) after 86 km" }
+- { date: 2023-06-03, name: "Anchetty BRM", brevet_km: 200, recorded_km: 85.6, note: "DNF (did not finish) after 86 km" }
+- { date: 2023-06-17, name: "300 km BRM", brevet_km: 300, note: "DNS (did not start): registered, didn't ride" }
 - { date: 2023-07-22, name: "Puttaparthi BRM", brevet_km: 400, recorded_km: 405.4, gain_m: 2422, post: puttaparthi-400-brm }
 - { date: 2023-11-01, name: "Rajyotsava BRM", brevet_km: 200, recorded_km: 173.0, gain_m: 808, note: "DNF (did not finish) after 173 km" }
 - { date: 2023-11-11, name: "Melukote BRM", brevet_km: 300, recorded_km: 174.7, gain_m: 1144, note: "DNF (did not finish) after 175 km" }
-- { date: 2025-01-04, name: "Nandi Hills BRM", brevet_km: 200, recorded_km: 209.4, gain_m: 1489, post: nandi-hills-200-brm }
+- { date: 2025-01-04, name: "Nandi Hills BRM", brevet_km: 200, recorded_km: 209.4, gain_m: 1489, post: nandi-hills-200-brm, note: "LF (late finish): completed just after the 13.5 h limit" }

@@ -51,7 +51,7 @@ sources:
 
 This is the longest ride in my Strava log: **405.4 km with 2,422 m of climbing, finished in 27 hours without any
 sleep or naps** (23.0 hours of moving time). It came
-two months after my first 200 km BRM ([Minchina Ota](/rides/minchina-ota-200-brm/)), in the biggest training year I've
+two months after my first completed 200 km BRM ([Minchina Ota](/rides/minchina-ota-200-brm/)), in the biggest training year I've
 had on the bike.
 
 That summer of riding is also why I went into [Bodhpathri Lakes](/treks/bodhpathri-lakes/) in August–September 2023 with

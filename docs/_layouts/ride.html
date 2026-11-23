@@ -11,7 +11,7 @@ layout: base
     <p class="crumbs"><a href="/rides/">Rides</a> › {% if r.ride_type == "brevet" %}Brevets{% else %}Tours{% endif %}</p>
     <h1>{{ r.title }}</h1>
 
-    <p class="status done">{% if r.result == "dnf" %}↩️ <strong>Rode {{ r.date_done }}, did not finish.</strong>{% else %}✅ <strong>Rode {{ r.date_done }}.</strong>{% endif %}{% if r.notes_pending %}
+    <p class="status done">{% if r.result == "dnf" %}↩️ <strong>Rode {{ r.date_done }}, did not finish.</strong>{% elsif r.result == "late" %}⏱️ <strong>Rode {{ r.date_done }}, completed after the {{ r.time_limit_h }}-hour limit (LF, late finish).</strong>{% else %}✅ <strong>Rode {{ r.date_done }}.</strong>{% endif %}{% if r.notes_pending %}
         The numbers below are from my Strava log. My own ride notes and photos are being added.{% endif %}</p>
 
     <section class="tldr" aria-label="Summary">

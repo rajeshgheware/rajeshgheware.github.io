@@ -47,13 +47,13 @@ image: /rides/img/rides-hub.jpg
     <p class="empty" hidden>No rides match these filters.</p>
 
     <h2>Brevet log</h2>
-    <p>Every BRM in my Strava log: 3 finished, 3 DNF (did not finish), and one 100 km attempt. "Recorded" is the GPS distance on Strava; for a DNF, it is how far I got.</p>
+    <p>Every BRM I entered, from my Strava log and the Audax India results: 2 finished within the time limit, 1 LF (late finish), 4 DNF (did not finish) and 1 DNS (did not start). "Recorded" is the GPS distance on Strava; for a DNF, it is how far I got.</p>
     <table class="trek-table">
         <thead><tr><th>Date</th><th>Brevet</th><th>Distance</th><th>Recorded</th><th>Climbing</th><th>Note</th></tr></thead>
         <tbody>{% assign brevets = site.data.brevets | sort: "date" | reverse %}{% for b in brevets %}
             <tr><td>{% if b.month_only %}{{ b.date | date: "%b %Y" }}{% else %}{{ b.date | date: "%-d %b %Y" }}{% endif %}</td>
                 <td>{% if b.post %}<a href="/rides/{{ b.post }}/">{{ b.name }}</a>{% else %}{{ b.name }}{% endif %}</td>
-                <td>{{ b.brevet_km }} km</td><td>{{ b.recorded_km }} km</td><td>{% if b.gain_m %}{{ b.gain_m }} m{% endif %}</td><td>{{ b.note }}</td></tr>{% endfor %}
+                <td>{{ b.brevet_km }} km</td><td>{% if b.recorded_km %}{{ b.recorded_km }} km{% else %}—{% endif %}</td><td>{% if b.gain_m %}{{ b.gain_m }} m{% endif %}</td><td>{{ b.note }}</td></tr>{% endfor %}
         </tbody>
     </table>
 
