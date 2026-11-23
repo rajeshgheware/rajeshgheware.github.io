@@ -73,7 +73,17 @@ is usually over Kongmaru La (about 5,200 m) to Shang Sumdo or Chogdo. The exact 
 I didn't make the summit. On summit day, severe lower back pain and a lack of physical energy made me turn back
 before the top. On a 6,000 m peak, turning around when your body says no is the right call.
 
-I've since added core, lower-back and summit-day fuelling sections to my
+### What went wrong: no energy reserve
+
+On every trek I carry **0.5–1 kg of roasted almonds** and snack on them through the day. They keep my energy steady.
+On [Annapurna Base Camp](/treks/annapurna-base-camp/) I climbed as easily and as fast as our Sherpa trek leader.
+
+On Kang Yatse 2 I didn't have my almonds. I was often hungry at night, and my energy kept dipping day after day. By
+the time I reached base camp I was already running on empty, and my lower back had flared up. Summit day started
+from that deficit. The lesson for me: **my trail food is part of my kit, not an extra.** I won't start a high trek
+without it again.
+
+I've since added core, lower-back and trail-food sections to my
 [high-altitude training guide](/treks/guides/high-altitude-fitness/).
 
 *More notes coming soon: how the approach days went, where summit day fell apart and what I'm changing in my training

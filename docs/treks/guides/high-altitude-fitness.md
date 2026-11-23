@@ -152,6 +152,12 @@ isn't enough. The structure carrying the pack has to last the full summit day.
 Summit days start before dawn and can run 10–12 hours. Running out of energy can end the day as surely as poor fitness
 can.
 
+- **Carry a trail food you trust, and enough of it.** Mine is roasted almonds: I pack 0.5–1 kg for every trek and
+  snack through the day. On Annapurna Base Camp they kept me level with our Sherpa trek leader. On Kang Yatse 2 I
+  didn't have them, went hungry at night, and reached base camp already out of energy. Energy lost on the approach
+  days doesn't come back on summit day.
+- **Keep a snack for the night.** Night hunger at high camps is real, and a handful of food helps you sleep and
+  recover.
 - **Practise eating on your long training days:** small amounts every 45–60 minutes, so you know what your stomach
   tolerates while climbing.
 - **Drink steadily**, and carry water you can reach without stopping.
@@ -189,5 +195,5 @@ For the full picture, including how to check an itinerary night by night and the
 - [ ] At least one about-1,000 m climbing day with a trek-weight pack
 - [ ] Two consecutive long days completed
 - [ ] Boots broken in over at least 50 km
-- [ ] Summit-day food tested on training days
+- [ ] Trail food packed (enough for every day, plus night snacks) and tested on training days
 - [ ] Itinerary checked against acclimatisation rules

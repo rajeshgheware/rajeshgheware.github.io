@@ -64,4 +64,7 @@ shortening the walk, which is why published distances vary so much.
 
 ## My trek: April 2018
 
+Energy was never a problem on this trek. I snacked on roasted almonds all the way and kept pace with our Sherpa trek
+leader on the climbs. Compare that with [Kang Yatse 2](/treks/kang-yatse-2/), where I didn't have them.
+
 *My first-hand notes are coming soon: my route, daily timings and photos from the Sanctuary.*
