@@ -61,7 +61,9 @@ my base was [stair climbing](/treks/guides/high-altitude-fitness/).
   a 10-hour trek day needs.
 - **Volume without pounding.** Riding is low-impact, so you can pile up hours that would be hard on your knees as running.
 - **Eating and drinking on the move.** Long rides force you to practise fuelling, which is exactly what summit day needs.
-  For my 400 km BRM I learned most of it from [Dr Andy Galpin's videos](https://www.youtube.com/@drandygalpin).
+  For my 400 km BRM I used honey mixed with an electrolyte drink, based on
+  [Dr Andy Galpin's videos](https://www.youtube.com/@drandygalpin), and rode 27 hours without sleep. See
+  [the Puttaparthi 400 post](/rides/puttaparthi-400-brm/).
 - **Back-to-back days.** Multi-day tours like [TOK 9](/rides/tok-9/), the Tour of Karnataka, (504 km in four days) train you to recover overnight
   and go again.
 
