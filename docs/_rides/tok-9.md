@@ -50,4 +50,10 @@ Bengaluru to the start, ride four days between hotel stops, and take the bus bac
 
 **504 km in four days.** Day 3, with 1,685 m of climbing, is one of the hilliest days in my whole log. TOK 9 came at the end of my biggest cycling year (3,659 km in 2023).
 
+### Swimming before the tour
+
+In the build-up to TOK 9 I swam a lot. My Strava log has **11 pool swims between 6 and 26 October 2023, 15.6 km in
+all**. Most were about 1,550 m in just over an hour, with a SWOLF (strokes plus seconds per length) of 76–83.
+Swimming is low-impact aerobic work, so it adds endurance without tiring the legs you need for four days on the bike.
+
 *More notes coming soon: the route, where I stayed and photos.*

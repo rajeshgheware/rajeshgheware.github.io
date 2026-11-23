@@ -53,4 +53,10 @@ Bengaluru to the start, ride four days between hotel stops, and take the bus bac
 
 I rode in batch 2. **450 km in four days**, with the climbing spread evenly: no day under 900 m.
 
+### Swimming before the tour
+
+As before TOK 9, I swam a lot in the build-up. My Strava log has **7 pool swims between 2 and 24 October 2024,
+8.6 km in all**, the longest 1,600 m. Swimming is low-impact aerobic work, so it adds endurance without tiring the
+legs you need for four days on the bike.
+
 *More notes coming soon: the route, where I stayed and photos.*

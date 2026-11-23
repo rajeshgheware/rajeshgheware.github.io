@@ -7,7 +7,7 @@ set -euo pipefail
 HOST=rajeshgheware.github.io
 KEY=0e4d82b72820072fda81b256b4e8bb93
 if [ $# -gt 0 ]; then
-  URLS=$(printf 'https://%s%s\n' "$HOST" "$@")
+  URLS=$(for p in "$@"; do printf 'https://%s%s\n' "$HOST" "$p"; done)
 else
   URLS=$(curl -fsS "https://$HOST/sitemap.xml" | grep -o '<loc>[^<]*' | sed 's/<loc>//')
 fi
