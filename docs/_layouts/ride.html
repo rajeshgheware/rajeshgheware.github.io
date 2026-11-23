@@ -82,16 +82,24 @@ layout: base
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rajeshgheware.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Rides", "item": {{ "/rides/" | absolute_url | jsonify }} },
+        { "@type": "ListItem", "position": 3, "name": {{ r.title | jsonify }}, "item": {{ page.url | absolute_url | jsonify }} }
+      ]
+    },
+    {
       "@type": "BlogPosting",
       "headline": {{ r.title | jsonify }},
       "description": {{ r.description | jsonify }},
       "url": {{ page.url | absolute_url | jsonify }},
       "datePublished": {{ r.date | date_to_xmlschema | jsonify }},
       "dateModified": {{ r.last_verified | date_to_xmlschema | jsonify }},
-      "author": { "@type": "Person", "name": "Rajesh Gheware", "url": "https://rajeshgheware.github.io/" },
+      "author": { "@type": "Person", "@id": "https://rajeshgheware.github.io/#person", "name": "Rajesh Gheware", "url": "https://rajeshgheware.github.io/" },
       "about": { "@id": {{ page.url | absolute_url | append: "#event" | jsonify }} },
-      "keywords": {{ r.tags | join: ", " | jsonify }}{% if r.hero %},
-      "image": {{ r.hero | absolute_url | jsonify }}{% endif %}
+      "keywords": {{ r.tags | join: ", " | jsonify }},
+      "image": {{ r.hero | default: "/rides/img/rides-hub.jpg" | absolute_url | jsonify }}
     },
     {
       "@type": "SportsEvent",

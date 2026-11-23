@@ -81,16 +81,24 @@ layout: base
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rajeshgheware.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Treks", "item": {{ "/treks/" | absolute_url | jsonify }} },
+        { "@type": "ListItem", "position": 3, "name": {{ t.title | jsonify }}, "item": {{ page.url | absolute_url | jsonify }} }
+      ]
+    },
+    {
       "@type": "BlogPosting",
       "headline": {{ t.title | jsonify }},
       "description": {{ t.description | jsonify }},
       "url": {{ page.url | absolute_url | jsonify }},
       "datePublished": {{ t.date | date_to_xmlschema | jsonify }},
       "dateModified": {{ t.last_verified | date_to_xmlschema | jsonify }},
-      "author": { "@type": "Person", "name": "Rajesh Gheware", "url": "https://rajeshgheware.github.io/" },
+      "author": { "@type": "Person", "@id": "https://rajeshgheware.github.io/#person", "name": "Rajesh Gheware", "url": "https://rajeshgheware.github.io/" },
       "about": { "@id": {{ page.url | absolute_url | append: "#place" | jsonify }} },
-      "keywords": {{ t.tags | join: ", " | jsonify }}{% if t.hero %},
-      "image": {{ t.hero | absolute_url | jsonify }}{% endif %}
+      "keywords": {{ t.tags | join: ", " | jsonify }},
+      "image": {{ t.hero | default: "/treks/img/kang-yatse-2.jpg" | absolute_url | jsonify }}
     },
     {
       "@type": {{ t.place_type | default: "Mountain" | jsonify }},
